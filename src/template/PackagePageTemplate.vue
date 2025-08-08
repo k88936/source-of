@@ -199,7 +199,7 @@ export default {
 .main-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 0;
+  padding: 24px 20px;
 }
 
 .content-section h3 {

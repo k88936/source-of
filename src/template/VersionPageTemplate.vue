@@ -143,7 +143,6 @@ export default {
 
         <el-col :span="8">
           <div class="sidebar">
-            <div class="sidebar-section">
               <h4>Release Information</h4>
               <div class="info-list">
                 <div class="info-item">
@@ -163,7 +162,6 @@ export default {
                   <span class="info-value">{{ formatSize(totalSize) }}</span>
                 </div>
               </div>
-            </div>
           </div>
         </el-col>
       </el-row>
@@ -228,7 +226,7 @@ export default {
 .main-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 0;
+  padding: 24px 20px;
 }
 
 .content-section h3 {
