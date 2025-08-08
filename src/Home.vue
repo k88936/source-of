@@ -43,8 +43,8 @@ export default {
       <el-container>
         <el-main>
           <div class="header-content">
-            <h1 class="page-title">Software Releases</h1>
-            <p class="page-subtitle">Download the latest versions of our software packages</p>
+            <h1 class="page-title">Source of</h1>
+            <p class="page-subtitle">A collection of software</p>
             <div class="header-stats">
               <span class="stat-item">{{ packages.length }} packages</span>
             </div>
@@ -83,7 +83,11 @@ export default {
                 </div>
                 <div class="package-details">
                   <div class="package-name">{{ pkg.displayName }}</div>
-                  <div class="package-description">{{ pkg.description || 'No description available' }}</div>
+                  <div class="package-extra">
+                    <span v-if="pkg.versions && pkg.versions.length" class="package-updated">
+                      Last updated: {{ new Date(pkg.versions[0].date).toLocaleDateString() }}
+                    </span>
+                  </div>
                 </div>
               </div>
               <div class="package-meta">
@@ -223,9 +227,21 @@ export default {
 
 .package-description {
   color: #656d76;
-  font-size: 0.875rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-size: 0.95rem;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+
+.package-extra {
+  font-size: 0.85rem;
+  color: #8c959f;
+  display: flex;
+  gap: 16px;
+  margin-top: 2px;
+}
+
+.package-updated {
   white-space: nowrap;
 }
 
@@ -234,14 +250,6 @@ export default {
   align-items: center;
   gap: 16px;
   flex-shrink: 0;
-}
-
-.download-count {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: #656d76;
-  font-size: 0.875rem;
 }
 
 .empty-state {

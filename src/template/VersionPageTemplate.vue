@@ -104,7 +104,7 @@ export default {
       <el-row :gutter="20" >
         <el-col :span="16">
           <div class="content-section">
-            <h3>Assets</h3>
+            <h3>Artifact</h3>
             <div class="assets-list">
               <div
                   v-for="file in versionInfo.files"
@@ -135,7 +135,7 @@ export default {
             </div>
 
             <div v-if="readme" class="readme-section">
-              <h4>Documentation</h4>
+              <h3>Documentation</h3>
               <MarkdownRenderer :content="readme" empty-message="No documentation available"/>
             </div>
           </div>

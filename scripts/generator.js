@@ -13,6 +13,29 @@ import {version} from "vue";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// Enhanced version comparison supporting v1.2.3, v8, build-149, plain numbers, etc.
+function compareVersions(a, b) {
+    const va = a.version || a;
+    const vb = b.version || b;
+
+    // Extract all number parts
+    const numA = (va.match(/\d+/g) || []).map(Number);
+    const numB = (vb.match(/\d+/g) || []).map(Number);
+
+    // Compare number parts
+    for (let i = 0; i < Math.max(numA.length, numB.length); i++) {
+        const na = numA[i] || 0;
+        const nb = numB[i] || 0;
+        if (na !== nb) return nb - na; // Descending
+    }
+
+    // If numbers are equal, compare alphabetically (for -alpha, -beta, etc.)
+    return vb.localeCompare(va);
+}
+
+// Example: compareVersions('3.11', '3.9') returns -1, so '3.11' > '3.9' in descending sort
+// Example: compareVersions('v3.11.1', 'v3.9.5') returns -1, so 'v3.11.1' > 'v3.9.5'
+
 class Generator {
     constructor() {
         this.storageProvider = new S3StorageProvider();
@@ -35,14 +58,11 @@ class Generator {
             // Generate data.js file
             await this.generateDataFile(packageData);
 
-
             // Generate package pages
             for (const pkg of packageData.packages) {
                 await this.generatePackagePage(pkg);
                 await this.generateVersionPages(pkg);
             }
-
-
             console.log('Page generation completed successfully!');
         } catch (error) {
             console.error('Error during page generation:', error);
@@ -72,8 +92,10 @@ class Generator {
         };
 
         for (const pkg of packages) {
-            const versions = await this.packageService.listVersions(pkg.name);
-            const latestVersion = versions[0]; // Assuming first is latest
+            let versions = await this.packageService.listVersions(pkg.name);
+            // Sort versions using custom logic
+            versions = versions.sort(compareVersions);
+            const latestVersion = versions[0]; // Now first is latest
 
             packageData.packages.push({
                 name: pkg.name,
@@ -81,7 +103,6 @@ class Generator {
                 description: pkg.description || '',
                 latestVersion: latestVersion?.version,
                 versions: versions,
-                downloadCount: pkg.downloadCount || 0
             });
         }
 

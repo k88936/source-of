@@ -3,8 +3,6 @@
  * Uses abstract storage provider for backend operations
  */
 
-import {version} from "vue";
-
 /**
  * Service class for package operations
  */

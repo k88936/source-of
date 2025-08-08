@@ -31,3 +31,4 @@ coverage
 /src/generated/
 /package-lock.json
 /.env
+/src/data.js

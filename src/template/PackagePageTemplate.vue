@@ -1,5 +1,5 @@
 <script>
-import {ArrowLeft, Box, Download, View,} from '@element-plus/icons-vue';
+import {ArrowLeft, Box, View,} from '@element-plus/icons-vue';
 import MarkdownRenderer from '@/components/MarkdownRenderer.vue';
 
 export default {
@@ -8,12 +8,9 @@ export default {
     View() {
       return View
     },
-    Download() {
-      return Download
-    }
   },
   components: {
-    ArrowLeft, Box, Download, View, MarkdownRenderer
+    ArrowLeft, Box, View, MarkdownRenderer
   },
   data() {
     return {
@@ -32,11 +29,8 @@ export default {
     navigateToVersion(version) {
       this.$router.push(`/${this.packageInfo.name}/${version}`);
     },
-    downloadLatest() {
-      this.$router.push(`/${this.packageInfo.name}/latest`);
-    },
     viewLatest() {
-      this.$router.push(`/${this.packageInfo.name}/${this.packageInfo.latestVersion}`);
+      this.navigateToVersion(this.packageInfo.latestVersion);
     },
     formatDate(dateString) {
       return new Date(dateString).toLocaleDateString('en-US', {
@@ -68,15 +62,11 @@ export default {
               </el-icon>
               <div class="package-details">
                 <h1>{{ packageInfo.displayName }}</h1>
-                <p class="package-description">{{ packageInfo.description || 'No description available' }}</p>
               </div>
             </div>
             <div class="package-actions">
-              <el-button type="primary" @click="downloadLatest" :icon="Download">
-                Download Latest
-              </el-button>
-              <el-button @click="viewLatest" :icon="View">
-                View {{ packageInfo.latestVersion }}
+              <el-button type="primary" @click="viewLatest" :icon="View">
+                Latest
               </el-button>
             </div>
           </div>
@@ -85,58 +75,29 @@ export default {
     </div>
 
     <el-main class="main-content">
-      <el-row :gutter="20">
-        <el-col :span="16">
-          <div class="content-section">
-            <h3>Latest Release</h3>
-            <div class="latest-release">
-              <div class="release-header">
-                <el-tag type="success">{{ packageInfo.latestVersion }}</el-tag>
-                <span class="release-date">Latest release</span>
-              </div>
-            </div>
+      <el-col>
+            <h4>Releases</h4>
+            <div class="version-list">
+              <div
+                  v-for="version in packageInfo.versions"
+                  :key="version.version"
 
-            <div v-if="readme" class="readme-section">
-              <h4>Documentation</h4>
-              <MarkdownRenderer :content="readme" empty-message="No documentation available"/>
-            </div>
-            <div v-else class="no-readme">
-              <el-empty description="No documentation available" :image-size="80"></el-empty>
-            </div>
-          </div>
-        </el-col>
-
-        <el-col :span="8">
-          <div class="sidebar">
-            <div class="sidebar-section">
-              <h4>Releases</h4>
-              <div class="version-list">
-                <div
-                    v-for="version in packageInfo.versions"
-                    :key="version.version"
-                    class="version-item"
-                    :class="{ 'latest': version.version === packageInfo.latestVersion }"
-                >
-                  <div class="version-info">
-                    <div class="version-header">
-                      <strong>{{ version.version }}</strong>
-                      <el-tag v-if="version.version === packageInfo.latestVersion" size="small" type="success">Latest
-                      </el-tag>
-                    </div>
-                    <div class="version-meta">
-                      <span class="version-date">{{ formatDate(version.date) }}</span>
-                      <span class="file-count">{{ version.files?.length || 0 }} files</span>
-                    </div>
+                  class="version-item"
+                  @click="navigateToVersion(version.version)">
+                <div class="version-info">
+                  <div class="version-header">
+                    <strong>{{ version.version }}</strong>
+                    <el-tag v-if="version.version === packageInfo.latestVersion" size="small" type="success">Latest
+                    </el-tag>
                   </div>
-                  <el-button size="small" @click="navigateToVersion(version.version)" text type="primary">
-                    View
-                  </el-button>
+                  <div class="version-meta">
+                    <span class="version-date">{{ formatDate(version.date) }}</span>
+                    <span class="file-count">{{ version.files?.length || 0 }} files</span>
+                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-        </el-col>
-      </el-row>
+        </div>
+      </el-col>
     </el-main>
   </div>
 </template>
@@ -184,18 +145,6 @@ export default {
   color: #24292f;
 }
 
-.package-description {
-  margin: 0;
-  color: #656d76;
-  font-size: 1rem;
-}
-
-.package-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
 .main-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -208,26 +157,6 @@ export default {
   font-size: 1.25rem;
   font-weight: 600;
 }
-
-.latest-release {
-  background: white;
-  border: 1px solid #d1d9e0;
-  border-radius: 6px;
-  padding: 16px;
-  margin-bottom: 24px;
-}
-
-.release-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.release-date {
-  color: #656d76;
-  font-size: 0.875rem;
-}
-
 .readme-section h4 {
   margin: 0 0 12px 0;
   color: #24292f;
@@ -235,18 +164,11 @@ export default {
   font-weight: 600;
 }
 
-.sidebar h4 {
-  margin: 0 0 12px 0;
-  color: #24292f;
-  font-size: 1rem;
-  font-weight: 600;
-}
 
 .version-list {
   background: white;
   border: 1px solid #d1d9e0;
   border-radius: 6px;
-  overflow: hidden;
 }
 
 .version-item {
@@ -254,6 +176,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
+  cursor: pointer;
   border-bottom: 1px solid #d8dee4;
   transition: background-color 0.15s ease;
 }
@@ -264,10 +187,6 @@ export default {
 
 .version-item:last-child {
   border-bottom: none;
-}
-
-.version-item.latest {
-  background-color: #f6f8fa;
 }
 
 .version-header {
