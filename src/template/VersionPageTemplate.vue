@@ -135,8 +135,8 @@ export default {
             </div>
 
             <div v-if="readme" class="readme-section">
-              <h3>Release Notes</h3>
-              <MarkdownRenderer :content="readme" class="readme-content"/>
+              <h4>Documentation</h4>
+              <MarkdownRenderer :content="readme" empty-message="No documentation available"/>
             </div>
           </div>
         </el-col>
@@ -289,16 +289,6 @@ export default {
   margin-top: 24px;
 }
 
-.readme-content {
-  background: white;
-  border: 1px solid #d1d9e0;
-  border-radius: 6px;
-  padding: 16px;
-  max-height: 400px;
-  overflow-y: auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.6;
-}
 
 .sidebar h4 {
   margin: 0 0 12px 0;
