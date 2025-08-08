@@ -1,126 +1,275 @@
-<template>
-  <div class="homepage">
-    <el-header class="site-header">
-      <h1>Software Download Center</h1>
-      <p>Download the latest versions of our software packages</p>
-    </el-header>
-
-    <el-main>
-      <el-row :gutter="20">
-        <el-col 
-          v-for="pkg in packages" 
-          :key="pkg.name"
-          :xs="24" 
-          :sm="12" 
-          :md="8" 
-          :lg="6"
-          class="package-col"
-        >
-          <el-card 
-            :body-style="{ padding: '20px' }"
-            shadow="hover"
-            class="package-card"
-            @click="navigateToPackage(pkg.name)"
-          >
-            <div class="package-info">
-              <h3>{{ pkg.displayName }}</h3>
-              <p class="package-description">{{ pkg.description }}</p>
-              <div class="package-stats">
-                <el-tag size="small" type="success">
-                  Latest: {{ pkg.latestVersion }}
-                </el-tag>
-                <span class="download-count">
-                  {{ pkg.downloadCount }} downloads
-                </span>
-              </div>
-            </div>
-          </el-card>
-        </el-col>
-      </el-row>
-    </el-main>
-  </div>
-</template>
-
 <script>
-import { packageData } from './data.js';
+import {packageData} from './data.js';
+import {Search, ArrowRight, Box} from '@element-plus/icons-vue';
 
 export default {
   name: 'Home',
+  components: {
+    Search,
+    ArrowRight,
+    Box
+  },
   data() {
     return {
-      packages: packageData.packages
+      packages: packageData.packages,
+      searchText: ''
     };
+  },
+  computed: {
+    filteredPackages() {
+      if (!this.searchText) return this.packages;
+      return this.packages.filter(pkg =>
+          pkg.displayName.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          (pkg.description && pkg.description.toLowerCase().includes(this.searchText.toLowerCase()))
+      );
+    },
+    totalDownloads() {
+      return this.packages.reduce((sum, pkg) => sum + (pkg.downloadCount || 0), 0);
+    }
   },
   methods: {
     navigateToPackage(packageName) {
       this.$router.push(`/${packageName}`);
-    }
+    },
+
   }
 };
 </script>
 
+<template>
+  <div class="homepage">
+    <!-- Header Section -->
+    <div class="header-section">
+      <el-container>
+        <el-main>
+          <div class="header-content">
+            <h1 class="page-title">Software Releases</h1>
+            <p class="page-subtitle">Download the latest versions of our software packages</p>
+            <div class="header-stats">
+              <span class="stat-item">{{ packages.length }} packages</span>
+            </div>
+          </div>
+        </el-main>
+      </el-container>
+    </div>
+
+    <!-- Packages List -->
+    <el-container class="packages-container">
+      <el-main>
+        <div class="list-header">
+          <el-input
+              v-model="searchText"
+              placeholder="Find a package..."
+              :prefix-icon="Search"
+              size="default"
+              class="search-input"
+              clearable
+          />
+        </div>
+
+        <div class="packages-list">
+          <div
+              v-for="pkg in filteredPackages"
+              :key="pkg.name"
+              class="package-item"
+              @click="navigateToPackage(pkg.name)"
+          >
+            <div class="package-info">
+              <div class="package-main">
+                <div class="package-icon">
+                  <el-icon size="20">
+                    <Box/>
+                  </el-icon>
+                </div>
+                <div class="package-details">
+                  <div class="package-name">{{ pkg.displayName }}</div>
+                  <div class="package-description">{{ pkg.description || 'No description available' }}</div>
+                </div>
+              </div>
+              <div class="package-meta">
+                <el-tag size="small" type="primary" effect="plain">
+                  {{ pkg.latestVersion }}
+                </el-tag>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <el-empty
+            v-if="filteredPackages.length === 0"
+            description="No packages found"
+            class="empty-state"
+        />
+      </el-main>
+    </el-container>
+  </div>
+</template>
+
 <style scoped>
 .homepage {
-  min-height: 1000vh;
-  background-color: #f5f5f5;
+  min-height: 100vh;
+  background-color: #fafbfc;
 }
 
-.site-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+.header-section {
+  background: white;
+  border-bottom: 1px solid #d1d9e0;
+  padding: 32px 0;
+}
+
+.header-content {
   text-align: center;
-  padding: 40px 20px;
 }
 
-.site-header h1 {
-  margin: 0 0 10px 0;
-  font-size: 2.5rem;
+.page-title {
+  font-size: 2rem;
   font-weight: 600;
+  color: #24292f;
+  margin: 0 0 8px 0;
 }
 
-.site-header p {
-  margin: 0;
-  font-size: 1.1rem;
-  opacity: 0.9;
+.page-subtitle {
+  font-size: 1rem;
+  color: #656d76;
+  margin: 0 0 16px 0;
 }
 
-.package-col {
-  margin-bottom: 20px;
+.header-stats {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  font-size: 0.875rem;
+  color: #656d76;
 }
 
-.package-card {
-  cursor: pointer;
-  transition: transform 0.2s;
-  height: 200px;
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.package-card:hover {
-  transform: translateY(-5px);
+.packages-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 0;
 }
 
-.package-info h3 {
-  margin: 0 0 10px 0;
-  color: #2c3e50;
-  font-size: 1.3rem;
+.list-header {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.package-description {
-  color: #7f8c8d;
-  margin-bottom: 15px;
-  font-size: 0.9rem;
-  line-height: 1.4;
-  height: 60px;
+.search-input {
+  width: 320px;
+}
+
+.packages-list {
+  background: white;
+  border: 1px solid #d1d9e0;
+  border-radius: 6px;
   overflow: hidden;
 }
 
-.package-stats {
+.package-item {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #d8dee4;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.package-item:hover {
+  background-color: #f6f8fa;
+}
+
+.package-item:last-child {
+  border-bottom: none;
+}
+
+.package-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+}
+
+.package-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.package-icon {
+  color: #656d76;
+  flex-shrink: 0;
+}
+
+.package-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.package-name {
+  font-weight: 600;
+  color: #0969da;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.package-description {
+  color: #656d76;
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.package-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
 }
 
 .download-count {
-  font-size: 0.8rem;
-  color: #95a5a6;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #656d76;
+  font-size: 0.875rem;
+}
+
+.empty-state {
+  margin: 80px 0;
+}
+
+@media (max-width: 768px) {
+  .header-stats {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .list-header {
+    justify-content: stretch;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .package-info {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .package-meta {
+    justify-content: space-between;
+  }
 }
 </style>

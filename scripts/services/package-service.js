@@ -44,7 +44,6 @@ export class PackageService {
                             displayName: packageName,
                             description: '',
                             versions: new Set(),
-                            downloadCount: 0
                         };
                     }
 
