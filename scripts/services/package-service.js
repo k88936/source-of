@@ -109,7 +109,8 @@ export class PackageService {
 
                 for (const file of files) {
                     const parts = file.key.split('/');
-                    if (parts[-1] === "") continue;
+                    if (parts.length < 3 || parts[2] === "") continue;
+
                     versions[version].files.push({
                         name: parts.slice(2).join('/'),
                         key: file.key,
