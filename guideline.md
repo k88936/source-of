@@ -29,3 +29,10 @@
             - /package-a/latest - version page, with download links and embedded documentation
             - /package-a/v8 - 
 - Pages only need to provide S3 permanent links for downloads, no backend needed.
+## Backend
+- upload script to upload software packages to s3 as a cd step.
+    - standalone script, invoked by CI/CD
+    - should support uploading multiple files/a whole folder for one version
+    - encapsulate the S3 API for easy switch to other storage solutions (e.g., WebDAV).
+    - read secrets from environment variables or .env or pass secret from args
+  
