@@ -37,7 +37,7 @@ for (const pkg of packageData.packages) {
 }
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
 
