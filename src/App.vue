@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <Header />
     <router-view/>
   </div>
 </template>
 
 <script>
+import Header from './components/Header.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    Header
+  }
 }
 </script>
 
@@ -17,6 +23,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  background-color: var(--el-bg-color-page);
 }
 
 body {

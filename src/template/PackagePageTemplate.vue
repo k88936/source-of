@@ -106,13 +106,13 @@ export default {
 <style scoped>
 .package-page {
   min-height: 100vh;
-  background-color: #fafbfc;
+  background-color: var(--el-bg-color-page);
 }
 
 .package-header {
-  background: white;
-  border-bottom: 1px solid #d1d9e0;
   padding: 16px 0 24px 0;
+  background: var(--el-bg-color);
+  border-bottom: 1px solid var(--el-border-color);
 }
 
 .header-nav {
@@ -125,6 +125,9 @@ export default {
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .package-info {
@@ -135,14 +138,14 @@ export default {
 }
 
 .package-icon {
-  color: #656d76;
+  color: var(--el-text-color-regular);
 }
 
 .package-details h1 {
   margin: 0 0 4px 0;
   font-size: 1.75rem;
   font-weight: 600;
-  color: #24292f;
+  color: var(--el-text-color-primary);
 }
 
 .main-content {
@@ -153,21 +156,21 @@ export default {
 
 .content-section h3 {
   margin: 0 0 16px 0;
-  color: #24292f;
+  color: var(--el-text-color-primary);
   font-size: 1.25rem;
   font-weight: 600;
 }
+
 .readme-section h4 {
   margin: 0 0 12px 0;
-  color: #24292f;
+  color: var(--el-text-color-primary);
   font-size: 1rem;
   font-weight: 600;
 }
 
-
 .version-list {
-  background: white;
-  border: 1px solid #d1d9e0;
+  background: var(--el-bg-color);
+  border: 1px solid var(--el-border-color);
   border-radius: 6px;
 }
 
@@ -177,12 +180,12 @@ export default {
   align-items: center;
   padding: 12px 16px;
   cursor: pointer;
-  border-bottom: 1px solid #d8dee4;
+  border-bottom: 1px solid var(--el-border-color);
   transition: background-color 0.15s ease;
 }
 
 .version-item:hover {
-  background-color: #f6f8fa;
+  background-color: var(--el-bg-color-page);
 }
 
 .version-item:last-child {
@@ -200,7 +203,7 @@ export default {
   display: flex;
   gap: 12px;
   font-size: 0.75rem;
-  color: #656d76;
+  color: var(--el-text-color-regular);
 }
 
 @media (max-width: 768px) {

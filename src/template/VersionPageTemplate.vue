@@ -173,12 +173,12 @@ export default {
 <style scoped>
 .version-page {
   min-height: 100vh;
-  background-color: #fafbfc;
+  background-color: var(--el-bg-color-page);
 }
 
 .version-header {
-  background: white;
-  border-bottom: 1px solid #d1d9e0;
+  background: var(--el-bg-color);
+  border-bottom: 1px solid var(--el-border-color);
   padding: 16px 0 24px 0;
 }
 
@@ -192,6 +192,9 @@ export default {
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .version-info {
@@ -202,19 +205,19 @@ export default {
 }
 
 .version-icon {
-  color: #656d76;
+  color: var(--el-text-color-regular);
 }
 
 .version-details h1 {
   margin: 0 0 4px 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: #24292f;
+  color: var(--el-text-color-primary);
 }
 
 .release-info {
   margin: 0;
-  color: #656d76;
+  color: var(--el-text-color-regular);
   font-size: 1rem;
 }
 
@@ -231,14 +234,14 @@ export default {
 
 .content-section h3 {
   margin: 0 0 16px 0;
-  color: #24292f;
+  color: var(--el-text-color-primary);
   font-size: 1.25rem;
   font-weight: 600;
 }
 
 .assets-list {
-  background: white;
-  border: 1px solid #d1d9e0;
+  background: var(--el-bg-color);
+  border: 1px solid var(--el-border-color);
   border-radius: 6px;
   overflow: hidden;
   margin-bottom: 24px;
@@ -249,12 +252,12 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  border-bottom: 1px solid #d8dee4;
+  border-bottom: 1px solid var(--el-border-color);
   transition: background-color 0.15s ease;
 }
 
 .asset-item:hover {
-  background-color: #f6f8fa;
+  background-color: var(--el-bg-color-page);
 }
 
 .asset-item:last-child {
@@ -269,35 +272,34 @@ export default {
 }
 
 .asset-icon {
-  color: #656d76;
+  color: var(--el-text-color-regular);
 }
 
 .asset-name {
   font-weight: 500;
-  color: #24292f;
+  color: var(--el-text-color-primary);
   margin-bottom: 2px;
 }
 
 .asset-meta {
   font-size: 0.75rem;
-  color: #656d76;
+  color: var(--el-text-color-regular);
 }
 
 .readme-section {
   margin-top: 24px;
 }
 
-
 .sidebar h4 {
   margin: 0 0 12px 0;
-  color: #24292f;
+  color: var(--el-text-color-primary);
   font-size: 1rem;
   font-weight: 600;
 }
 
 .info-list {
-  background: white;
-  border: 1px solid #d1d9e0;
+  background: var(--el-bg-color);
+  border: 1px solid var(--el-border-color);
   border-radius: 6px;
   overflow: hidden;
 }
@@ -307,7 +309,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
-  border-bottom: 1px solid #d8dee4;
+  border-bottom: 1px solid var(--el-border-color);
 }
 
 .info-item:last-child {
@@ -316,13 +318,13 @@ export default {
 
 .info-label {
   font-size: 0.875rem;
-  color: #656d76;
+  color: var(--el-text-color-regular);
   font-weight: 500;
 }
 
 .info-value {
   font-size: 0.875rem;
-  color: #24292f;
+  color: var(--el-text-color-primary);
 }
 
 @media (max-width: 768px) {

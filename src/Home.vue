@@ -31,7 +31,6 @@ export default {
     navigateToPackage(packageName) {
       this.$router.push(`/${packageName}`);
     },
-
   }
 };
 </script>
@@ -112,12 +111,12 @@ export default {
 <style scoped>
 .homepage {
   min-height: 100vh;
-  background-color: #fafbfc;
+  background-color: var(--el-bg-color-page);
 }
 
 .header-section {
-  background: white;
-  border-bottom: 1px solid #d1d9e0;
+  background: var(--el-bg-color);
+  border-bottom: 1px solid var(--el-border-color);
   padding: 32px 0;
 }
 
@@ -128,13 +127,13 @@ export default {
 .page-title {
   font-size: 2rem;
   font-weight: 600;
-  color: #24292f;
+  color: var(--el-text-color-primary);
   margin: 0 0 8px 0;
 }
 
 .page-subtitle {
   font-size: 1rem;
-  color: #656d76;
+  color: var(--el-text-color-regular);
   margin: 0 0 16px 0;
 }
 
@@ -143,7 +142,7 @@ export default {
   justify-content: center;
   gap: 24px;
   font-size: 0.875rem;
-  color: #656d76;
+  color: var(--el-text-color-regular);
 }
 
 .stat-item {
@@ -169,8 +168,8 @@ export default {
 }
 
 .packages-list {
-  background: white;
-  border: 1px solid #d1d9e0;
+  background: var(--el-bg-color);
+  border: 1px solid var(--el-border-color);
   border-radius: 6px;
   overflow: hidden;
 }
@@ -179,13 +178,13 @@ export default {
   display: flex;
   align-items: center;
   padding: 16px;
-  border-bottom: 1px solid #d8dee4;
+  border-bottom: 1px solid var(--el-border-color);
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
 
 .package-item:hover {
-  background-color: #f6f8fa;
+  background-color: var(--el-bg-color-page);
 }
 
 .package-item:last-child {
@@ -209,7 +208,7 @@ export default {
 }
 
 .package-icon {
-  color: #656d76;
+  color: var(--el-text-color-regular);
   flex-shrink: 0;
 }
 
@@ -220,25 +219,16 @@ export default {
 
 .package-name {
   font-weight: 600;
-  color: #0969da;
-  font-size: 1rem;
-  margin-bottom: 2px;
-}
-
-.package-description {
-  color: #656d76;
-  font-size: 0.95rem;
-  margin-top: 2px;
+  color: var(--el-text-color-primary);
   margin-bottom: 4px;
-  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .package-extra {
-  font-size: 0.85rem;
-  color: #8c959f;
-  display: flex;
-  gap: 16px;
-  margin-top: 2px;
+  font-size: 0.875rem;
+  color: var(--el-text-color-regular);
 }
 
 .package-updated {
@@ -248,36 +238,25 @@ export default {
 .package-meta {
   display: flex;
   align-items: center;
-  gap: 16px;
-  flex-shrink: 0;
+  gap: 8px;
 }
 
 .empty-state {
-  margin: 80px 0;
+  padding: 40px 0;
 }
 
 @media (max-width: 768px) {
-  .header-stats {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .list-header {
-    justify-content: stretch;
+  .packages-container {
+    padding: 16px 0;
   }
 
   .search-input {
     width: 100%;
   }
 
-  .package-info {
+  .header-stats {
     flex-direction: column;
-    align-items: stretch;
-    gap: 12px;
-  }
-
-  .package-meta {
-    justify-content: space-between;
+    gap: 8px;
   }
 }
 </style>
