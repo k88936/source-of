@@ -23,7 +23,11 @@ function generatePagesPlugin() {
 
 // https://vite.dev/config/
 export default defineConfig({
-    base: "/my-collection/", // Change this to your desired base URL
+    base: "/source-of/", // Change this to your desired base URL
+
+    build:{
+        outDir:"./docs"
+    },
     plugins: [
         generatePagesPlugin(),
         vue(),
