@@ -17,9 +17,9 @@ export class S3StorageProvider extends StorageProvider {
     super();
 
     // S3 configuration from environment variables
-    this.accessKey = process.env.ACCESS_KEY;
-    this.secretKey = process.env.SECRET_KEY;
-    this.bucketName = process.env.BUCKET_NAME;
+    this.accessKey = process.env.S3_ACCESS_KEY;
+    this.secretKey = process.env.S3_SECRET_KEY;
+    this.bucketName = process.env.S3_BUCKET_NAME;
     this.region = process.env.AWS_REGION || 'us-east-1';
     this.endpoint = process.env.S3_ENDPOINT;
 

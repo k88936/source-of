@@ -67,9 +67,9 @@ bucket/
 Create a `.env` file in the project root:
 
 ```env
-ACCESS_KEY=your_s3_access_key
-SECRET_KEY=your_s3_secret_key
-BUCKET_NAME=your_bucket_name
+S3_ACCESS_KEY=your_s3_access_key
+S3_SECRET_KEY=your_s3_secret_key
+S3_BUCKET_NAME=your_bucket_name
 AWS_REGION=us-east-1
 S3_ENDPOINT=https://your-s3-endpoint.com  # Optional for custom endpoints
 ```
