@@ -97,13 +97,13 @@ export default {
 }
 
 .markdown-content {
-  background: white;
-  border: 1px solid #d1d9e0;
+  background: var(--el-bg-color);
+  border: 1px solid var(--el-border-color);
   border-radius: 6px;
   padding: 16px;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
-  color: #24292f;
+  color: var(--el-text-color-regular);
 }
 
 /* GitHub-style markdown content */
@@ -117,18 +117,18 @@ export default {
   margin-bottom: 16px;
   font-weight: 600;
   line-height: 1.25;
-  color: #24292f;
+  color: var(--el-text-color-primary);
 }
 
 .markdown-content :deep(h1) {
   font-size: 2em;
-  border-bottom: 1px solid #d8dee4;
+  border-bottom: 1px solid var(--el-border-color);
   padding-bottom: 0.3em;
 }
 
 .markdown-content :deep(h2) {
   font-size: 1.5em;
-  border-bottom: 1px solid #d8dee4;
+  border-bottom: 1px solid var(--el-border-color);
   padding-bottom: 0.3em;
 }
 
@@ -166,15 +166,15 @@ export default {
 .markdown-content :deep(blockquote) {
   margin: 0 0 16px 0;
   padding: 0 1em;
-  color: #656d76;
-  border-left: 0.25em solid #d8dee4;
+  color: var(--el-text-color-secondary);
+  border-left: 0.25em solid var(--el-border-color);
 }
 
 .markdown-content :deep(code) {
   padding: 0.2em 0.4em;
   margin: 0;
   font-size: 85%;
-  background-color: #f6f8fa;
+  background-color: var(--el-fill-color-light);
   border-radius: 6px;
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
 }
@@ -184,7 +184,7 @@ export default {
   overflow: auto;
   font-size: 85%;
   line-height: 1.45;
-  background-color: #f6f8fa;
+  background-color: var(--el-fill-color-light);
   border-radius: 6px;
   margin-bottom: 16px;
 }
@@ -211,20 +211,20 @@ export default {
 .markdown-content :deep(table th),
 .markdown-content :deep(table td) {
   padding: 6px 13px;
-  border: 1px solid #d8dee4;
+  border: 1px solid var(--el-border-color);
 }
 
 .markdown-content :deep(table th) {
   font-weight: 600;
-  background-color: #f6f8fa;
+  background-color: var(--el-fill-color-light);
 }
 
 .markdown-content :deep(table tr:nth-child(2n)) {
-  background-color: #f6f8fa;
+  background-color: var(--el-fill-color-light);
 }
 
 .markdown-content :deep(a) {
-  color: #0969da;
+  color: var(--el-color-primary);
   text-decoration: none;
 }
 
@@ -242,7 +242,7 @@ export default {
   height: 0.25em;
   padding: 0;
   margin: 24px 0;
-  background-color: #d8dee4;
+  background-color: var(--el-border-color);
   border: 0;
 }
 </style>
