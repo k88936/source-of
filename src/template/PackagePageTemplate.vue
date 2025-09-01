@@ -46,7 +46,7 @@ export default {
   <div class="package-page">
     <div class="package-header">
       <el-container>
-        <el-main>
+        <el-main style="max-width: 1200px; margin: 0 auto;">
           <div class="header-nav">
             <el-button @click="goHome" text type="primary">
               <el-icon>
@@ -125,7 +125,6 @@ export default {
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }

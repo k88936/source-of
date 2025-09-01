@@ -71,7 +71,7 @@ export default {
   <div class="version-page">
     <div class="version-header">
       <el-container>
-        <el-main>
+        <el-main style="max-width: 1200px; margin: 0 auto;">
           <div class="header-nav">
             <el-button @click="goBack" text type="primary">
               <el-icon>
@@ -101,7 +101,7 @@ export default {
     </div>
 
     <el-main class="main-content">
-      <el-row :gutter="20" >
+      <el-row :gutter="20">
         <el-col :span="16">
           <div class="content-section">
             <h3>Artifact</h3>
@@ -122,9 +122,9 @@ export default {
                 </div>
                 <div class="asset-actions">
                   <a
-                    :href="file.downloadUrl"
-                    target="_blank"
-                    rel="noopener"
+                      :href="file.downloadUrl"
+                      target="_blank"
+                      rel="noopener"
                   >
                     <el-button size="small" :icon="Download">
                       Download
@@ -143,25 +143,25 @@ export default {
 
         <el-col :span="8">
           <div class="sidebar">
-              <h4>Release Information</h4>
-              <div class="info-list">
-                <div class="info-item">
-                  <span class="info-label">Version</span>
-                  <el-tag type="primary">{{ versionInfo.version }}</el-tag>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">Release Date</span>
-                  <span class="info-value">{{ formatDate(versionInfo.date) }}</span>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">Total Files</span>
-                  <span class="info-value">{{ versionInfo.files?.length || 0 }}</span>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">Total Size</span>
-                  <span class="info-value">{{ formatSize(totalSize) }}</span>
-                </div>
+            <h4>Release Information</h4>
+            <div class="info-list">
+              <div class="info-item">
+                <span class="info-label">Version</span>
+                <el-tag type="primary">{{ versionInfo.version }}</el-tag>
               </div>
+              <div class="info-item">
+                <span class="info-label">Release Date</span>
+                <span class="info-value">{{ formatDate(versionInfo.date) }}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Total Files</span>
+                <span class="info-value">{{ versionInfo.files?.length || 0 }}</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Total Size</span>
+                <span class="info-value">{{ formatSize(totalSize) }}</span>
+              </div>
+            </div>
           </div>
         </el-col>
       </el-row>
@@ -192,7 +192,6 @@ export default {
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
