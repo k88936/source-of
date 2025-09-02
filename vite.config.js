@@ -4,7 +4,8 @@ import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import {Generator} from './scripts/generator.js'
-
+import Pages from 'vite-plugin-pages'
+import { ViteSSG } from 'vite-ssg';
 // Custom plugin to generate pages before build
 function generatePagesPlugin() {
     return {
@@ -25,14 +26,19 @@ function generatePagesPlugin() {
 export default defineConfig({
     base: "/source-of/", // Change this to your desired base URL
 
-    build:{
-        outDir:"./docs"
+    build: {
+        outDir: "./docs"
     },
     plugins: [
         generatePagesPlugin(),
         vue(),
         vueDevTools(),
-    ],
+        Pages({
+            dirs : [
+                {dir: 'src/generated', baseRoute: '/'}
+            ],
+            extensions: ['vue'],
+        }),],
     resolve: {
         alias: {
             '@': fileURLToPath(new URL('./src', import.meta.url))

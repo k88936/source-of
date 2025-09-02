@@ -116,7 +116,6 @@ The build process automatically:
 │   │   └── VersionPageTemplate.vue
 │   ├── generated/               # Auto-generated pages (git-ignored)
 │   ├── data.js                 # Generated package metadata
-│   ├── route.js                # Dynamic routing configuration
 │   ├── App.vue
 │   └── Home.vue
 └── vite.config.js              # Build configuration with generator plugin
