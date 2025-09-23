@@ -17,9 +17,19 @@
   "\u0000/opt/buildagent/work/b3562268410f5c6/node_modules/dayjs/plugin/weekOfYear.js?commonjs-module": [],
   "\u0000/opt/buildagent/work/b3562268410f5c6/node_modules/dayjs/plugin/weekYear.js?commonjs-es-import": [],
   "\u0000/opt/buildagent/work/b3562268410f5c6/node_modules/dayjs/plugin/weekYear.js?commonjs-module": [],
+  "\u0000/opt/buildagent/work/b3562268410f5c6/node_modules/jszip/dist/jszip.min.js?commonjs-es-import": [
+    "/source-of/assets/jszip.min-CRKDxbsK.js"
+  ],
+  "\u0000/opt/buildagent/work/b3562268410f5c6/node_modules/jszip/dist/jszip.min.js?commonjs-module": [
+    "/source-of/assets/jszip.min-CRKDxbsK.js"
+  ],
+  "\u0000commonjs-dynamic-modules": [
+    "/source-of/assets/jszip.min-CRKDxbsK.js"
+  ],
   "\u0000commonjsHelpers.js": [],
   "\u0000plugin-vue:export-helper": [],
   "\u0000vite/modulepreload-polyfill.js": [],
+  "\u0000vite/preload-helper.js": [],
   "index.html": [],
   "node_modules/@ctrl/tinycolor/dist/module/conversion.js": [],
   "node_modules/@ctrl/tinycolor/dist/module/css-color-names.js": [],
@@ -769,6 +779,9 @@
   "node_modules/element-plus/node_modules/@vueuse/shared/index.mjs": [],
   "node_modules/element-plus/theme-chalk/dark/css-vars.css": [],
   "node_modules/hookable/dist/index.mjs": [],
+  "node_modules/jszip/dist/jszip.min.js": [
+    "/source-of/assets/jszip.min-CRKDxbsK.js"
+  ],
   "node_modules/lodash-es/_DataView.js": [],
   "node_modules/lodash-es/_Hash.js": [],
   "node_modules/lodash-es/_ListCache.js": [],
@@ -981,6 +994,10 @@
   "node_modules/lodash-es/toPlainObject.js": [],
   "node_modules/lodash-es/toString.js": [],
   "node_modules/lodash-es/union.js": [],
+  "node_modules/marked/lib/marked.esm.js": [
+    "/source-of/assets/MarkdownRenderer-C6MBaqkH.js",
+    "/source-of/assets/MarkdownRenderer-C-Dz6f4W.css"
+  ],
   "node_modules/memoize-one/dist/memoize-one.esm.js": [],
   "node_modules/normalize-wheel-es/dist/index.mjs": [],
   "node_modules/vite-ssg/dist/index.mjs": [],
@@ -1000,7 +1017,551 @@
   "src/Home.vue?vue&type=style&index=0&scoped=a9fd7e64&lang.css": [],
   "src/components/Header.vue": [],
   "src/components/Header.vue?vue&type=style&index=0&scoped=1d3b50fb&lang.css": [],
+  "src/components/MarkdownRenderer.vue": [
+    "/source-of/assets/MarkdownRenderer-C6MBaqkH.js",
+    "/source-of/assets/MarkdownRenderer-C-Dz6f4W.css"
+  ],
+  "src/components/MarkdownRenderer.vue?vue&type=style&index=0&scoped=6a447aa8&lang.css": [
+    "/source-of/assets/MarkdownRenderer-C6MBaqkH.js",
+    "/source-of/assets/MarkdownRenderer-C-Dz6f4W.css"
+  ],
   "src/data.js": [],
+  "src/generated/APKPure/index.vue": [
+    "/source-of/assets/index-CrYXZc3V.js",
+    "/source-of/assets/index-CFo2Z22A.css"
+  ],
+  "src/generated/APKPure/index.vue?vue&type=style&index=0&scoped=e958c11b&lang.css": [
+    "/source-of/assets/index-CrYXZc3V.js",
+    "/source-of/assets/index-CFo2Z22A.css"
+  ],
+  "src/generated/APKPure/v1.01.50/index.vue": [
+    "/source-of/assets/index-BBppvI57.js",
+    "/source-of/assets/index-Bx9Dbbqj.css"
+  ],
+  "src/generated/APKPure/v1.01.50/index.vue?vue&type=style&index=0&scoped=581cabe0&lang.css": [
+    "/source-of/assets/index-BBppvI57.js",
+    "/source-of/assets/index-Bx9Dbbqj.css"
+  ],
+  "src/generated/Authing/index.vue": [
+    "/source-of/assets/index-BjGAR7RH.js",
+    "/source-of/assets/index-C42eddNM.css"
+  ],
+  "src/generated/Authing/index.vue?vue&type=style&index=0&scoped=643c8053&lang.css": [
+    "/source-of/assets/index-BjGAR7RH.js",
+    "/source-of/assets/index-C42eddNM.css"
+  ],
+  "src/generated/Authing/v1.5.0/index.vue": [
+    "/source-of/assets/index-B71Ke2bZ.js",
+    "/source-of/assets/index-BwC4HHsE.css"
+  ],
+  "src/generated/Authing/v1.5.0/index.vue?vue&type=style&index=0&scoped=ec609cd8&lang.css": [
+    "/source-of/assets/index-B71Ke2bZ.js",
+    "/source-of/assets/index-BwC4HHsE.css"
+  ],
+  "src/generated/Bluetooth-Keyboard-&-Mouse/index.vue": [
+    "/source-of/assets/index-DKeau_KD.js",
+    "/source-of/assets/index-DZwociZW.css"
+  ],
+  "src/generated/Bluetooth-Keyboard-&-Mouse/index.vue?vue&type=style&index=0&scoped=645bd7b5&lang.css": [
+    "/source-of/assets/index-DKeau_KD.js",
+    "/source-of/assets/index-DZwociZW.css"
+  ],
+  "src/generated/Bluetooth-Keyboard-&-Mouse/v5.4.6/index.vue": [
+    "/source-of/assets/index-CEez4oTB.js",
+    "/source-of/assets/index-nEWVbKs3.css"
+  ],
+  "src/generated/Bluetooth-Keyboard-&-Mouse/v5.4.6/index.vue?vue&type=style&index=0&scoped=a642dc8d&lang.css": [
+    "/source-of/assets/index-CEez4oTB.js",
+    "/source-of/assets/index-nEWVbKs3.css"
+  ],
+  "src/generated/Bootice/index.vue": [
+    "/source-of/assets/index-BbMoIZ_3.js",
+    "/source-of/assets/index-CF6FkgXr.css"
+  ],
+  "src/generated/Bootice/index.vue?vue&type=style&index=0&scoped=b696c32f&lang.css": [
+    "/source-of/assets/index-BbMoIZ_3.js",
+    "/source-of/assets/index-CF6FkgXr.css"
+  ],
+  "src/generated/Bootice/v1.3.4/index.vue": [
+    "/source-of/assets/index-D4l4h5yi.js",
+    "/source-of/assets/index-B8h8Zh-w.css"
+  ],
+  "src/generated/Bootice/v1.3.4/index.vue?vue&type=style&index=0&scoped=38b7c9e8&lang.css": [
+    "/source-of/assets/index-D4l4h5yi.js",
+    "/source-of/assets/index-B8h8Zh-w.css"
+  ],
+  "src/generated/Clash-Meta-for-Android/index.vue": [
+    "/source-of/assets/index-CXLRJPVw.js",
+    "/source-of/assets/index-ClTtGxP6.css"
+  ],
+  "src/generated/Clash-Meta-for-Android/index.vue?vue&type=style&index=0&scoped=f31f59fb&lang.css": [
+    "/source-of/assets/index-CXLRJPVw.js",
+    "/source-of/assets/index-ClTtGxP6.css"
+  ],
+  "src/generated/Clash-Meta-for-Android/v2.11.4/index.vue": [
+    "/source-of/assets/index-BWZoTvWE.js",
+    "/source-of/assets/index-BqBbAM58.css"
+  ],
+  "src/generated/Clash-Meta-for-Android/v2.11.4/index.vue?vue&type=style&index=0&scoped=02efba76&lang.css": [
+    "/source-of/assets/index-BWZoTvWE.js",
+    "/source-of/assets/index-BqBbAM58.css"
+  ],
+  "src/generated/ContextMenuManager/4.0/index.vue": [
+    "/source-of/assets/index-MuC68l8G.js",
+    "/source-of/assets/index-DfEnFjki.css"
+  ],
+  "src/generated/ContextMenuManager/4.0/index.vue?vue&type=style&index=0&scoped=0b018e1e&lang.css": [
+    "/source-of/assets/index-MuC68l8G.js",
+    "/source-of/assets/index-DfEnFjki.css"
+  ],
+  "src/generated/ContextMenuManager/index.vue": [
+    "/source-of/assets/index-C3iR1uN_.js",
+    "/source-of/assets/index-CqJ0FmOC.css"
+  ],
+  "src/generated/ContextMenuManager/index.vue?vue&type=style&index=0&scoped=2b958556&lang.css": [
+    "/source-of/assets/index-C3iR1uN_.js",
+    "/source-of/assets/index-CqJ0FmOC.css"
+  ],
+  "src/generated/CrystalDiskInfo/9.6.3/index.vue": [
+    "/source-of/assets/index-CxDuWIw2.js",
+    "/source-of/assets/index-BnbSM_zO.css"
+  ],
+  "src/generated/CrystalDiskInfo/9.6.3/index.vue?vue&type=style&index=0&scoped=bffdd601&lang.css": [
+    "/source-of/assets/index-CxDuWIw2.js",
+    "/source-of/assets/index-BnbSM_zO.css"
+  ],
+  "src/generated/CrystalDiskInfo/index.vue": [
+    "/source-of/assets/index-CHELaEnG.js",
+    "/source-of/assets/index-BvBdtIpO.css"
+  ],
+  "src/generated/CrystalDiskInfo/index.vue?vue&type=style&index=0&scoped=80db45b2&lang.css": [
+    "/source-of/assets/index-CHELaEnG.js",
+    "/source-of/assets/index-BvBdtIpO.css"
+  ],
+  "src/generated/F-Droid/index.vue": [
+    "/source-of/assets/index-YNnxJKxH.js",
+    "/source-of/assets/index-DNtjpu9M.css"
+  ],
+  "src/generated/F-Droid/index.vue?vue&type=style&index=0&scoped=148c08d9&lang.css": [
+    "/source-of/assets/index-YNnxJKxH.js",
+    "/source-of/assets/index-DNtjpu9M.css"
+  ],
+  "src/generated/F-Droid/v1.21.1/index.vue": [
+    "/source-of/assets/index-yK_KXtvK.js",
+    "/source-of/assets/index-Yvuy9o4_.css"
+  ],
+  "src/generated/F-Droid/v1.21.1/index.vue?vue&type=style&index=0&scoped=3c4061f4&lang.css": [
+    "/source-of/assets/index-yK_KXtvK.js",
+    "/source-of/assets/index-Yvuy9o4_.css"
+  ],
+  "src/generated/GeoGebra/index.vue": [
+    "/source-of/assets/index-CbPld-BI.js",
+    "/source-of/assets/index-DyI4qi2Z.css"
+  ],
+  "src/generated/GeoGebra/index.vue?vue&type=style&index=0&scoped=fa53941c&lang.css": [
+    "/source-of/assets/index-CbPld-BI.js",
+    "/source-of/assets/index-DyI4qi2Z.css"
+  ],
+  "src/generated/GeoGebra/v5.0.791.0/index.vue": [
+    "/source-of/assets/index-Akyr1vHI.js",
+    "/source-of/assets/index-4ArpgYxY.css"
+  ],
+  "src/generated/GeoGebra/v5.0.791.0/index.vue?vue&type=style&index=0&scoped=767fcce9&lang.css": [
+    "/source-of/assets/index-Akyr1vHI.js",
+    "/source-of/assets/index-4ArpgYxY.css"
+  ],
+  "src/generated/Github-android/index.vue": [
+    "/source-of/assets/index-BFLfzNKT.js",
+    "/source-of/assets/index-wIxvaApn.css"
+  ],
+  "src/generated/Github-android/index.vue?vue&type=style&index=0&scoped=6e323775&lang.css": [
+    "/source-of/assets/index-BFLfzNKT.js",
+    "/source-of/assets/index-wIxvaApn.css"
+  ],
+  "src/generated/Github-android/v1.133.0/index.vue": [
+    "/source-of/assets/index-DSzaQ6xo.js",
+    "/source-of/assets/index-BroYflMp.css"
+  ],
+  "src/generated/Github-android/v1.133.0/index.vue?vue&type=style&index=0&scoped=e5fd69f3&lang.css": [
+    "/source-of/assets/index-DSzaQ6xo.js",
+    "/source-of/assets/index-BroYflMp.css"
+  ],
+  "src/generated/IsoPix/index.vue": [
+    "/source-of/assets/index-BaeUUH9p.js",
+    "/source-of/assets/index-A0CQEimO.css"
+  ],
+  "src/generated/IsoPix/index.vue?vue&type=style&index=0&scoped=047feb09&lang.css": [
+    "/source-of/assets/index-BaeUUH9p.js",
+    "/source-of/assets/index-A0CQEimO.css"
+  ],
+  "src/generated/IsoPix/v1.45/index.vue": [
+    "/source-of/assets/index-DZI6fJh1.js",
+    "/source-of/assets/index-HWLcFfT9.css"
+  ],
+  "src/generated/IsoPix/v1.45/index.vue?vue&type=style&index=0&scoped=57d495b2&lang.css": [
+    "/source-of/assets/index-DZI6fJh1.js",
+    "/source-of/assets/index-HWLcFfT9.css"
+  ],
+  "src/generated/MGit/index.vue": [
+    "/source-of/assets/index-CywqxKn0.js",
+    "/source-of/assets/index-CUbOFtfp.css"
+  ],
+  "src/generated/MGit/index.vue?vue&type=style&index=0&scoped=64b2500a&lang.css": [
+    "/source-of/assets/index-CywqxKn0.js",
+    "/source-of/assets/index-CUbOFtfp.css"
+  ],
+  "src/generated/MGit/v1.7.0/index.vue": [
+    "/source-of/assets/index-8MYyRFY_.js",
+    "/source-of/assets/index-cpvJw0BT.css"
+  ],
+  "src/generated/MGit/v1.7.0/index.vue?vue&type=style&index=0&scoped=f454619d&lang.css": [
+    "/source-of/assets/index-8MYyRFY_.js",
+    "/source-of/assets/index-cpvJw0BT.css"
+  ],
+  "src/generated/MT-Manager/index.vue": [
+    "/source-of/assets/index-Bf5RrMp2.js",
+    "/source-of/assets/index-C-p1q61Z.css"
+  ],
+  "src/generated/MT-Manager/index.vue?vue&type=style&index=0&scoped=0396e7a0&lang.css": [
+    "/source-of/assets/index-Bf5RrMp2.js",
+    "/source-of/assets/index-C-p1q61Z.css"
+  ],
+  "src/generated/MT-Manager/v2.18.1/index.vue": [
+    "/source-of/assets/index-CK5LghSm.js",
+    "/source-of/assets/index-6s6ZSHC1.css"
+  ],
+  "src/generated/MT-Manager/v2.18.1/index.vue?vue&type=style&index=0&scoped=32c3ba6e&lang.css": [
+    "/source-of/assets/index-CK5LghSm.js",
+    "/source-of/assets/index-6s6ZSHC1.css"
+  ],
+  "src/generated/Math-Calculator/index.vue": [
+    "/source-of/assets/index-B7rtTKPT.js",
+    "/source-of/assets/index-CmF8dswg.css"
+  ],
+  "src/generated/Math-Calculator/index.vue?vue&type=style&index=0&scoped=e42d1b18&lang.css": [
+    "/source-of/assets/index-B7rtTKPT.js",
+    "/source-of/assets/index-CmF8dswg.css"
+  ],
+  "src/generated/Math-Calculator/v2.6.5/index.vue": [
+    "/source-of/assets/index-0QDSX6ZI.js",
+    "/source-of/assets/index-DEJcWolY.css"
+  ],
+  "src/generated/Math-Calculator/v2.6.5/index.vue?vue&type=style&index=0&scoped=f1c053ba&lang.css": [
+    "/source-of/assets/index-0QDSX6ZI.js",
+    "/source-of/assets/index-DEJcWolY.css"
+  ],
+  "src/generated/Mindustry/150.1/index.vue": [
+    "/source-of/assets/index-Dg8jLVyI.js",
+    "/source-of/assets/index-CqAwmXVH.css"
+  ],
+  "src/generated/Mindustry/150.1/index.vue?vue&type=style&index=0&scoped=6c98f8de&lang.css": [
+    "/source-of/assets/index-Dg8jLVyI.js",
+    "/source-of/assets/index-CqAwmXVH.css"
+  ],
+  "src/generated/Mindustry/index.vue": [
+    "/source-of/assets/index-CuJu3ZyU.js",
+    "/source-of/assets/index-DV0FDC5D.css"
+  ],
+  "src/generated/Mindustry/index.vue?vue&type=style&index=0&scoped=fd501677&lang.css": [
+    "/source-of/assets/index-CuJu3ZyU.js",
+    "/source-of/assets/index-DV0FDC5D.css"
+  ],
+  "src/generated/NFC-Tools/index.vue": [
+    "/source-of/assets/index-CKuIUnv3.js",
+    "/source-of/assets/index-iMPcpgiP.css"
+  ],
+  "src/generated/NFC-Tools/index.vue?vue&type=style&index=0&scoped=bc61ac71&lang.css": [
+    "/source-of/assets/index-CKuIUnv3.js",
+    "/source-of/assets/index-iMPcpgiP.css"
+  ],
+  "src/generated/NFC-Tools/v8.12/index.vue": [
+    "/source-of/assets/index-ChfJVNbL.js",
+    "/source-of/assets/index-DfvPZP10.css"
+  ],
+  "src/generated/NFC-Tools/v8.12/index.vue?vue&type=style&index=0&scoped=c2cf108e&lang.css": [
+    "/source-of/assets/index-ChfJVNbL.js",
+    "/source-of/assets/index-DfvPZP10.css"
+  ],
+  "src/generated/Pixel-Studio/index.vue": [
+    "/source-of/assets/index-CiueCenQ.js",
+    "/source-of/assets/index-CXeaChis.css"
+  ],
+  "src/generated/Pixel-Studio/index.vue?vue&type=style&index=0&scoped=d12b9315&lang.css": [
+    "/source-of/assets/index-CiueCenQ.js",
+    "/source-of/assets/index-CXeaChis.css"
+  ],
+  "src/generated/Pixel-Studio/v5.02/index.vue": [
+    "/source-of/assets/index-BPkJxfM_.js",
+    "/source-of/assets/index-CHIsjOdm.css"
+  ],
+  "src/generated/Pixel-Studio/v5.02/index.vue?vue&type=style&index=0&scoped=2d405715&lang.css": [
+    "/source-of/assets/index-BPkJxfM_.js",
+    "/source-of/assets/index-CHIsjOdm.css"
+  ],
+  "src/generated/Qt/6/index.vue": [
+    "/source-of/assets/index-DpeU3y3n.js",
+    "/source-of/assets/index-CkA2OpAF.css"
+  ],
+  "src/generated/Qt/6/index.vue?vue&type=style&index=0&scoped=fd8d7c22&lang.css": [
+    "/source-of/assets/index-DpeU3y3n.js",
+    "/source-of/assets/index-CkA2OpAF.css"
+  ],
+  "src/generated/Qt/index.vue": [
+    "/source-of/assets/index-B3MMyBYZ.js",
+    "/source-of/assets/index-m47vCUWD.css"
+  ],
+  "src/generated/Qt/index.vue?vue&type=style&index=0&scoped=fd7ba5a2&lang.css": [
+    "/source-of/assets/index-B3MMyBYZ.js",
+    "/source-of/assets/index-m47vCUWD.css"
+  ],
+  "src/generated/RustDesk-android/index.vue": [
+    "/source-of/assets/index-BvnfY4aV.js",
+    "/source-of/assets/index-DQjsV8Q7.css"
+  ],
+  "src/generated/RustDesk-android/index.vue?vue&type=style&index=0&scoped=0d570cb3&lang.css": [
+    "/source-of/assets/index-BvnfY4aV.js",
+    "/source-of/assets/index-DQjsV8Q7.css"
+  ],
+  "src/generated/RustDesk-android/v1.4.0/index.vue": [
+    "/source-of/assets/index-ypr8O4DP.js",
+    "/source-of/assets/index-DpCY3F8R.css"
+  ],
+  "src/generated/RustDesk-android/v1.4.0/index.vue?vue&type=style&index=0&scoped=7c9227fe&lang.css": [
+    "/source-of/assets/index-ypr8O4DP.js",
+    "/source-of/assets/index-DpCY3F8R.css"
+  ],
+  "src/generated/RustedWarfare/1.15/index.vue": [
+    "/source-of/assets/index-YWaMT0tY.js",
+    "/source-of/assets/index-BA-gyjnb.css"
+  ],
+  "src/generated/RustedWarfare/1.15/index.vue?vue&type=style&index=0&scoped=7b256754&lang.css": [
+    "/source-of/assets/index-YWaMT0tY.js",
+    "/source-of/assets/index-BA-gyjnb.css"
+  ],
+  "src/generated/RustedWarfare/index.vue": [
+    "/source-of/assets/index-CvJxlZif.js",
+    "/source-of/assets/index-BEQJUFWV.css"
+  ],
+  "src/generated/RustedWarfare/index.vue?vue&type=style&index=0&scoped=81a84d14&lang.css": [
+    "/source-of/assets/index-CvJxlZif.js",
+    "/source-of/assets/index-BEQJUFWV.css"
+  ],
+  "src/generated/UnityHub/Official/index.vue": [
+    "/source-of/assets/index-EOSuLpK3.js",
+    "/source-of/assets/index-BgYeG4tC.css"
+  ],
+  "src/generated/UnityHub/Official/index.vue?vue&type=style&index=0&scoped=375808da&lang.css": [
+    "/source-of/assets/index-EOSuLpK3.js",
+    "/source-of/assets/index-BgYeG4tC.css"
+  ],
+  "src/generated/UnityHub/index.vue": [
+    "/source-of/assets/index-uox01_ZN.js",
+    "/source-of/assets/index-DhfhNRB3.css"
+  ],
+  "src/generated/UnityHub/index.vue?vue&type=style&index=0&scoped=5bd98302&lang.css": [
+    "/source-of/assets/index-uox01_ZN.js",
+    "/source-of/assets/index-DhfhNRB3.css"
+  ],
+  "src/generated/WePE/1.3/index.vue": [
+    "/source-of/assets/index-XEVTE588.js",
+    "/source-of/assets/index-CCKox7ux.css"
+  ],
+  "src/generated/WePE/1.3/index.vue?vue&type=style&index=0&scoped=28195d51&lang.css": [
+    "/source-of/assets/index-XEVTE588.js",
+    "/source-of/assets/index-CCKox7ux.css"
+  ],
+  "src/generated/WePE/2.3/index.vue": [
+    "/source-of/assets/index-C5nTbw-o.js",
+    "/source-of/assets/index-aFQUf7H9.css"
+  ],
+  "src/generated/WePE/2.3/index.vue?vue&type=style&index=0&scoped=48c06b96&lang.css": [
+    "/source-of/assets/index-C5nTbw-o.js",
+    "/source-of/assets/index-aFQUf7H9.css"
+  ],
+  "src/generated/WePE/index.vue": [
+    "/source-of/assets/index-BEnbd-he.js",
+    "/source-of/assets/index-B-0ETDnd.css"
+  ],
+  "src/generated/WePE/index.vue?vue&type=style&index=0&scoped=f918ba3f&lang.css": [
+    "/source-of/assets/index-BEnbd-he.js",
+    "/source-of/assets/index-B-0ETDnd.css"
+  ],
+  "src/generated/Win10/en/index.vue": [
+    "/source-of/assets/index-CRQMqofD.js",
+    "/source-of/assets/index-gffUG6k8.css"
+  ],
+  "src/generated/Win10/en/index.vue?vue&type=style&index=0&scoped=1c38abc9&lang.css": [
+    "/source-of/assets/index-CRQMqofD.js",
+    "/source-of/assets/index-gffUG6k8.css"
+  ],
+  "src/generated/Win10/index.vue": [
+    "/source-of/assets/index-D8JxQYmO.js",
+    "/source-of/assets/index-DxiMYcXA.css"
+  ],
+  "src/generated/Win10/index.vue?vue&type=style&index=0&scoped=97f13c41&lang.css": [
+    "/source-of/assets/index-D8JxQYmO.js",
+    "/source-of/assets/index-DxiMYcXA.css"
+  ],
+  "src/generated/Win11/en/index.vue": [
+    "/source-of/assets/index-BK9pMaYZ.js",
+    "/source-of/assets/index-BPXA6ic-.css"
+  ],
+  "src/generated/Win11/en/index.vue?vue&type=style&index=0&scoped=4ceb478c&lang.css": [
+    "/source-of/assets/index-BK9pMaYZ.js",
+    "/source-of/assets/index-BPXA6ic-.css"
+  ],
+  "src/generated/Win11/index.vue": [
+    "/source-of/assets/index-C9XT0gRj.js",
+    "/source-of/assets/index-crqFztRr.css"
+  ],
+  "src/generated/Win11/index.vue?vue&type=style&index=0&scoped=c49f025c&lang.css": [
+    "/source-of/assets/index-C9XT0gRj.js",
+    "/source-of/assets/index-crqFztRr.css"
+  ],
+  "src/generated/Z-Lib/index.vue": [
+    "/source-of/assets/index-Dq6a8K2p.js",
+    "/source-of/assets/index-D8ai4dFO.css"
+  ],
+  "src/generated/Z-Lib/index.vue?vue&type=style&index=0&scoped=113e48c8&lang.css": [
+    "/source-of/assets/index-Dq6a8K2p.js",
+    "/source-of/assets/index-D8ai4dFO.css"
+  ],
+  "src/generated/Z-Lib/v1.11.4/index.vue": [
+    "/source-of/assets/index-BXg7WKgu.js",
+    "/source-of/assets/index-D16z3IBi.css"
+  ],
+  "src/generated/Z-Lib/v1.11.4/index.vue?vue&type=style&index=0&scoped=39708a4b&lang.css": [
+    "/source-of/assets/index-BXg7WKgu.js",
+    "/source-of/assets/index-D16z3IBi.css"
+  ],
+  "src/generated/ave-mujica/e1/index.vue": [
+    "/source-of/assets/index-B_BhC1F5.js",
+    "/source-of/assets/index-CCkGAz91.css"
+  ],
+  "src/generated/ave-mujica/e1/index.vue?vue&type=style&index=0&scoped=6048add5&lang.css": [
+    "/source-of/assets/index-B_BhC1F5.js",
+    "/source-of/assets/index-CCkGAz91.css"
+  ],
+  "src/generated/ave-mujica/index.vue": [
+    "/source-of/assets/index-oY2n1vm1.js",
+    "/source-of/assets/index-CPV3voPV.css"
+  ],
+  "src/generated/ave-mujica/index.vue?vue&type=style&index=0&scoped=c0ee7dcf&lang.css": [
+    "/source-of/assets/index-oY2n1vm1.js",
+    "/source-of/assets/index-CPV3voPV.css"
+  ],
+  "src/generated/clonezilla/3.2.0/index.vue": [
+    "/source-of/assets/index-BTL2GXKG.js",
+    "/source-of/assets/index-CWWmaAy9.css"
+  ],
+  "src/generated/clonezilla/3.2.0/index.vue?vue&type=style&index=0&scoped=a0648a40&lang.css": [
+    "/source-of/assets/index-BTL2GXKG.js",
+    "/source-of/assets/index-CWWmaAy9.css"
+  ],
+  "src/generated/clonezilla/index.vue": [
+    "/source-of/assets/index-DP7inIIq.js",
+    "/source-of/assets/index-MkXvqCo8.css"
+  ],
+  "src/generated/clonezilla/index.vue?vue&type=style&index=0&scoped=d85f596e&lang.css": [
+    "/source-of/assets/index-DP7inIIq.js",
+    "/source-of/assets/index-MkXvqCo8.css"
+  ],
+  "src/generated/gold/index.vue": [
+    "/source-of/assets/index-trTjsanI.js",
+    "/source-of/assets/index-CPnkDKls.css"
+  ],
+  "src/generated/gold/index.vue?vue&type=style&index=0&scoped=697914cb&lang.css": [
+    "/source-of/assets/index-trTjsanI.js",
+    "/source-of/assets/index-CPnkDKls.css"
+  ],
+  "src/generated/gold/v1.0.0/index.vue": [
+    "/source-of/assets/index-cJbirHCd.js",
+    "/source-of/assets/index-DO5KJyt3.css"
+  ],
+  "src/generated/gold/v1.0.0/index.vue?vue&type=style&index=0&scoped=8ee1d33d&lang.css": [
+    "/source-of/assets/index-cJbirHCd.js",
+    "/source-of/assets/index-DO5KJyt3.css"
+  ],
+  "src/generated/jetbrains-toolbox/index.vue": [
+    "/source-of/assets/index-BW9LJ6se.js",
+    "/source-of/assets/index-BARFhVlL.css"
+  ],
+  "src/generated/jetbrains-toolbox/index.vue?vue&type=style&index=0&scoped=1f52bcd3&lang.css": [
+    "/source-of/assets/index-BW9LJ6se.js",
+    "/source-of/assets/index-BARFhVlL.css"
+  ],
+  "src/generated/jetbrains-toolbox/v2.8.1/index.vue": [
+    "/source-of/assets/index-BqDnJ1sh.js",
+    "/source-of/assets/index-ClcDuW0E.css"
+  ],
+  "src/generated/jetbrains-toolbox/v2.8.1/index.vue?vue&type=style&index=0&scoped=07e240ab&lang.css": [
+    "/source-of/assets/index-BqDnJ1sh.js",
+    "/source-of/assets/index-ClcDuW0E.css"
+  ],
+  "src/generated/nextcloud-android/2025.8.8/index.vue": [
+    "/source-of/assets/index-q1UP6z5m.js",
+    "/source-of/assets/index-DHPX4Mma.css"
+  ],
+  "src/generated/nextcloud-android/2025.8.8/index.vue?vue&type=style&index=0&scoped=536928e0&lang.css": [
+    "/source-of/assets/index-q1UP6z5m.js",
+    "/source-of/assets/index-DHPX4Mma.css"
+  ],
+  "src/generated/nextcloud-android/index.vue": [
+    "/source-of/assets/index-D5xWrzZl.js",
+    "/source-of/assets/index-YMXE8qYS.css"
+  ],
+  "src/generated/nextcloud-android/index.vue?vue&type=style&index=0&scoped=dbc4d833&lang.css": [
+    "/source-of/assets/index-D5xWrzZl.js",
+    "/source-of/assets/index-YMXE8qYS.css"
+  ],
+  "src/generated/tencent/index.vue": [
+    "/source-of/assets/index-Df9jTgQq.js",
+    "/source-of/assets/index-7UvBWWI9.css"
+  ],
+  "src/generated/tencent/index.vue?vue&type=style&index=0&scoped=efd0e8ef&lang.css": [
+    "/source-of/assets/index-Df9jTgQq.js",
+    "/source-of/assets/index-7UvBWWI9.css"
+  ],
+  "src/generated/tencent/v0/index.vue": [
+    "/source-of/assets/index-DS6UMboD.js",
+    "/source-of/assets/index-BhqXetE3.css"
+  ],
+  "src/generated/tencent/v0/index.vue?vue&type=style&index=0&scoped=eabd6332&lang.css": [
+    "/source-of/assets/index-DS6UMboD.js",
+    "/source-of/assets/index-BhqXetE3.css"
+  ],
+  "src/generated/ventoy/1.1.05/index.vue": [
+    "/source-of/assets/index-CnUZLmId.js",
+    "/source-of/assets/index-Cb-WMpty.css"
+  ],
+  "src/generated/ventoy/1.1.05/index.vue?vue&type=style&index=0&scoped=ff3a9292&lang.css": [
+    "/source-of/assets/index-CnUZLmId.js",
+    "/source-of/assets/index-Cb-WMpty.css"
+  ],
+  "src/generated/ventoy/index.vue": [
+    "/source-of/assets/index-ClRzoEyJ.js",
+    "/source-of/assets/index-BQabLm9B.css"
+  ],
+  "src/generated/ventoy/index.vue?vue&type=style&index=0&scoped=dcb91771&lang.css": [
+    "/source-of/assets/index-ClRzoEyJ.js",
+    "/source-of/assets/index-BQabLm9B.css"
+  ],
+  "src/generated/龙门影视/2.3.7/index.vue": [
+    "/source-of/assets/index-Lsz3fuwj.js",
+    "/source-of/assets/index-BsNXXb_S.css"
+  ],
+  "src/generated/龙门影视/2.3.7/index.vue?vue&type=style&index=0&scoped=2f9d31d8&lang.css": [
+    "/source-of/assets/index-Lsz3fuwj.js",
+    "/source-of/assets/index-BsNXXb_S.css"
+  ],
+  "src/generated/龙门影视/index.vue": [
+    "/source-of/assets/index-CimffsYw.js",
+    "/source-of/assets/index-DE9H2KOk.css"
+  ],
+  "src/generated/龙门影视/index.vue?vue&type=style&index=0&scoped=e8280a1c&lang.css": [
+    "/source-of/assets/index-CimffsYw.js",
+    "/source-of/assets/index-DE9H2KOk.css"
+  ],
   "src/main.js": [],
   "virtual:vite-plugin-pages/generated-pages?id=~pages": []
 }
