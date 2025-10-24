@@ -2,7 +2,6 @@ import {fileURLToPath, URL} from 'node:url'
 
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
 import {Generator} from './scripts/generator.js'
 import Pages from 'vite-plugin-pages'
 import { ViteSSG } from 'vite-ssg';
@@ -32,7 +31,6 @@ export default defineConfig({
     plugins: [
         generatePagesPlugin(),
         vue(),
-        vueDevTools(),
         Pages({
             dirs : [
                 {dir: 'src/generated', baseRoute: '/'}
