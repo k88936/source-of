@@ -3,6 +3,28 @@
  * Uses abstract storage provider for backend operations
  */
 
+import {StorageProvider} from './storage/storage-provider';
+
+
+// Define interfaces for data structures
+export interface VersionInfo {
+    name: string;
+    displayName?: string;
+    description?: string;
+    version: string;
+}
+
+export interface PackageData {
+    packages: Array<{
+        name: string;
+        displayName: string;
+        description: string;
+        latestVersion?: string;
+        versions: VersionInfo[];
+    }>;
+    lastUpdated: string;
+}
+
 /**
  * Service class for package operations
  */

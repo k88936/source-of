@@ -4,7 +4,7 @@
  */
 import dotenv from 'dotenv';
 import { S3Client, ListObjectsV2Command, GetObjectCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
-import { StorageProvider } from './storage-interface.js';
+import { StorageProvider } from './storage-provider';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -12,14 +12,19 @@ dotenv.config();
 /**
  * S3 implementation of the StorageProvider interface
  */
-export class S3StorageProvider extends StorageProvider {
-  constructor() {
-    super();
+export class S3StorageProvider implements StorageProvider {
+  private readonly accessKey: string;
+  private readonly secretKey: string;
+  private readonly bucketName: string;
+  private readonly region: string;
+  private readonly endpoint?: string;
+  private readonly s3Client: S3Client;
 
+  constructor() {
     // S3 configuration from environment variables
-    this.accessKey = process.env.S3_ACCESS_KEY;
-    this.secretKey = process.env.S3_SECRET_KEY;
-    this.bucketName = process.env.S3_BUCKET_NAME;
+    this.accessKey = process.env.S3_ACCESS_KEY!;
+    this.secretKey = process.env.S3_SECRET_KEY!;
+    this.bucketName = process.env.S3_BUCKET_NAME!;
     this.region = process.env.AWS_REGION || 'us-east-1';
     this.endpoint = process.env.S3_ENDPOINT;
 
@@ -45,10 +50,10 @@ export class S3StorageProvider extends StorageProvider {
 
   /**
    * List all files with the given prefix
-   * @param {string} dir - The prefix to filter files by
-   * @returns {Promise<Array>} - Array of file objects
+   * @param dir - The prefix to filter files by
+   * @returns Array of file objects
    */
-  async listFiles(dir = '') {
+  async listFiles(dir: string = ''): Promise<Array<{key: string, lastModified: string, size: number}>> {
     try {
       const command = new ListObjectsV2Command({
         Bucket: this.bucketName,
@@ -62,9 +67,9 @@ export class S3StorageProvider extends StorageProvider {
       }
 
       return response.Contents.map(object => ({
-        key: object.Key,
-        lastModified: object.LastModified.toISOString(),
-        size: object.Size
+        key: object.Key!,
+        lastModified: object.LastModified!.toISOString(),
+        size: object.Size!
       }));
     } catch (error) {
       console.error('Error listing files:', error);
@@ -74,10 +79,10 @@ export class S3StorageProvider extends StorageProvider {
 
   /**
    * Read the content of a file
-   * @param {string} key - The key of the file
-   * @returns {Promise<string>} - The file content as string
+   * @param key - The key of the file
+   * @returns The file content as string
    */
-  async readFile(key) {
+  async readFile(key: string): Promise<string> {
     try {
       const command = new GetObjectCommand({
         Bucket: this.bucketName,
@@ -85,7 +90,7 @@ export class S3StorageProvider extends StorageProvider {
       });
 
       const response = await this.s3Client.send(command);
-      return await response.Body.transformToString();
+      return await response.Body!.transformToString();
     } catch (error) {
       console.error(`Error reading file ${key}:`, error);
       throw error;
@@ -94,10 +99,10 @@ export class S3StorageProvider extends StorageProvider {
 
   /**
    * Generate a download URL for a file
-   * @param {string} key - The key of the file
-   * @returns {string} - The download URL
+   * @param key - The key of the file
+   * @returns The download URL
    */
-  getDownloadUrl(key) {
+  getDownloadUrl(key: string): string {
     if (this.endpoint) {
       // For custom endpoints like MinIO
       return `${this.endpoint}/${this.bucketName}/${key}`;
@@ -108,10 +113,10 @@ export class S3StorageProvider extends StorageProvider {
 
   /**
    * Check if a file exists
-   * @param {string} key - The key of the file
-   * @returns {Promise<boolean>} - Whether the file exists
+   * @param key - The key of the file
+   * @returns Whether the file exists
    */
-  async fileExists(key) {
+  async fileExists(key: string): Promise<boolean> {
     try {
       const command = new HeadObjectCommand({
         Bucket: this.bucketName,
@@ -119,7 +124,7 @@ export class S3StorageProvider extends StorageProvider {
       });
       await this.s3Client.send(command);
       return true;
-    } catch (error) {
+    } catch (error: any) {
       if (error.name === 'NotFound' || error.$metadata?.httpStatusCode === 404) {
         return false;
       }

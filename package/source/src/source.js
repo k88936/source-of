@@ -3,8 +3,8 @@
  * This script generates all pages during the Vite build process
  */
 
-import {S3StorageProvider} from './storage/s3-provider.js';
-import {Parser} from './parser.js';
+import {S3StorageProvider} from './storage/s3-provider.ts';
+import {Parser} from './parser.ts';
 
 // Enhanced version comparison supporting v1.2.3, v8, build-149, plain numbers, etc.
 function compareVersions(a, b) {
@@ -68,7 +68,7 @@ class Source {
                 let versions = await this.parser.listVersions(pkg.name);
                 // Sort versions using custom logic
                 versions = versions.sort(compareVersions);
-                const latestVersion = versions[0]; // Now first is latest
+                const latestVersion = versions[0]; // Now first is the latest
 
                 packageData.packages.push({
                     name: pkg.name,
