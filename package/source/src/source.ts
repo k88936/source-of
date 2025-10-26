@@ -2,16 +2,19 @@
  * Page Generator - Creates static Vue pages from S3 data
  * This script generates all pages during the Vite build process
  */
-import {PackageData, VersionInfo, Parser,} from "./parser";
+import {PackageInfo, Parser, VersionInfo,} from "./parser";
 import {S3StorageProvider} from "./storage/s3-provider";
 
-
+export interface PackageData {
+    packages: PackageInfo[];
+    lastUpdated: string;
+}
 
 
 // Enhanced version comparison supporting v1.2.3, v8, build-149, plain numbers, etc.
-function compareVersions(a: VersionInfo | string, b: VersionInfo | string): number {
-    const va = typeof a === 'string' ? a : a.version;
-    const vb = typeof b === 'string' ? b : b.version;
+function compareVersions(a: VersionInfo, b: VersionInfo): number {
+    const va = a.version;
+    const vb = b.version;
 
     // Handle "latest" versions with higher priority
     if (va === "latest") return -1;
@@ -33,7 +36,7 @@ function compareVersions(a: VersionInfo | string, b: VersionInfo | string): numb
 }
 
 class Source {
-    private storageProvider: S3StorageProvider;
+    private readonly storageProvider: S3StorageProvider;
     private parser: Parser;
 
     constructor() {
@@ -41,66 +44,27 @@ class Source {
         this.parser = new Parser(this.storageProvider);
     }
 
-    async generate(): Promise<PackageData> {
-        console.log('Starting page generation...');
-
-        try {
-            // Fetch all package data
-            const packageData = await this.fetchPackageData();
-
-            console.log('packages info fetch and parse completed successfully!');
-
-            return packageData;
-        } catch (error: any) {
-            console.error('Error during page generation:', error);
-            throw new Error('Page generation failed - cannot proceed with build');
-        }
-    }
-
-    async fetchPackageData(): Promise<PackageData> {
+    async get(): Promise<PackageData> {
         console.log('Fetching package data from storage...');
 
         try {
-            const packages = await this.parser.listPackages();
-
-            const packageData: PackageData = {
-                packages: [],
-                lastUpdated: new Date().toISOString()
-            };
+            const packages = await this.parser.parse();
 
             for (const pkg of packages) {
-                let versions = await this.parser.listVersions(pkg.name);
-                // Sort versions using custom logic
-                versions = versions.sort(compareVersions);
-                const latestVersion = versions[0]; // Now first is the latest
+                pkg.versions.sort(compareVersions);
+                const latestVersion = pkg.versions[0]; // Now first is the latest
 
-                packageData.packages.push({
-                    name: pkg.name,
-                    displayName: pkg.displayName || pkg.name,
-                    description: pkg.description || '',
-                    latestVersion: latestVersion?.version,
-                    versions: versions,
-                });
+                const readme_file = latestVersion.files.find(file => file.name === "README.md");
+                if (readme_file) {
+                    pkg.readme = await this.storageProvider.readFile(readme_file.key)
+                }
             }
-
-            return packageData;
-        } catch (error: any) {
-            console.error('Failed to fetch package data from S3 storage');
-            console.error('-'.repeat(80));
-
-            if (error.message.startsWith('S3 Connection Failed:')) {
-                // Error is already well-formatted from S3StorageProvider
-                console.error(error.message);
-            } else {
-                console.error('Error:', error.message);
-                console.error('\nPlease verify your .env file contains:');
-                console.error('  - S3_BUCKET_NAME');
-                console.error('  - S3_REGION');
-                console.error('  - S3_ACCESS_KEY_ID');
-                console.error('  - S3_SECRET_ACCESS_KEY');
-                console.error('  - S3_ENDPOINT (if using S3-compatible storage)');
-            }
-
+            return {
+                packages: packages,
+                lastUpdated: new Date().toISOString()
+            };
+        } catch (error) {
+            console.error('Failed to fetch package data from S3 storage',error);
             console.error('-'.repeat(80));
             throw new Error('Package data fetch failed - cannot proceed with build');
         }
@@ -108,4 +72,4 @@ class Source {
 }
 
 // Export for use in a build process
-export { Source };
+export {PackageInfo, VersionInfo, Source};

@@ -1,11 +1,9 @@
-import {createDefaultPreset} from "ts-jest";
-
-const tsJestTransformCfg = createDefaultPreset().transform;
-
-/** @type {import("jest").Config} **/
-export default {
-  testEnvironment: "node",
-  transform: {
-    ...tsJestTransformCfg,
-  },
+// jest.config.js
+/** @type {import('jest').Config} */
+const config = {
+    preset: 'ts-jest',
+    testEnvironment: 'node',
+    extensionsToTreatAsEsm: ['.ts'],
 };
+
+export default config;

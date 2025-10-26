@@ -4,7 +4,7 @@
  */
 import dotenv from 'dotenv';
 import { S3Client, ListObjectsV2Command, GetObjectCommand, HeadObjectCommand } from '@aws-sdk/client-s3';
-import { StorageProvider } from './storage-provider';
+import { StorageProvider,File } from './storage-provider';
 
 // Load environment variables from .env file
 dotenv.config();
@@ -53,7 +53,7 @@ export class S3StorageProvider implements StorageProvider {
    * @param dir - The prefix to filter files by
    * @returns Array of file objects
    */
-  async listFiles(dir: string = ''): Promise<Array<{key: string, lastModified: string, size: number}>> {
+  async listFiles(dir: string = ''): Promise<Array<File>> {
     try {
       const command = new ListObjectsV2Command({
         Bucket: this.bucketName,

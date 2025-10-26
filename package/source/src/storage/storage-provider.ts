@@ -1,3 +1,9 @@
+export interface File {
+    key: string;
+    lastModified: string;
+    size: number;
+}
+
 /**
  * Abstract storage interface for file backends
  * Defines the basic operations that any storage backend must implement
@@ -9,7 +15,7 @@ export abstract class StorageProvider {
    * @param dir - The dir to filter files by
    * @returns Array of file objects with {key, lastModified, size}
    */
-  abstract listFiles(dir?: string): Promise<Array<{key: string, lastModified: string, size: number}>>;
+  abstract listFiles(dir?: string): Promise<Array<File>>;
 
   /**
    * Read the content of a file
