@@ -1,184 +1,75 @@
-# Source of - Static File Distribution Site
+# React + TypeScript + Vite
 
-A modern, static file distribution platform for software packages built with Vue.js and S3-compatible storage.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Overview
+Currently, two official plugins are available:
 
-Source of is a file download station designed to distribute software packages efficiently. The project generates completely static pages during build time, eliminating the need for a backend server while providing a rich user experience for browsing and downloading software packages.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Key Features
+## React Compiler
 
-- **Static Site Generation**: All pages are pre-built during the Vite build process
-- **S3-Compatible Storage**: Uses S3 API for file storage and distribution
-- **Multi-Version Support**: Handles various versioning schemes (v1.2.3, v8, build-149, etc.)
-- **Embedded Documentation**: Automatically renders README files from package repositories
-- **Vue.js Frontend**: Modern reactive UI with Element Plus components
-- **Zero Runtime Dependencies**: No backend server required for operation
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-## Architecture
+Note: This will impact Vite dev & build performances.
 
-### Storage Structure
+## Expanding the ESLint configuration
 
-The project uses a flexible S3 directory structure:
-```
-bucket/
-├── package-a/
-│   ├── v1.0.0/
-│   │   ├── file1.zip
-│   │   ├── file2.exe
-│   │   └── README.md
-│   └── v2.0.0/
-│       ├── file1.zip
-│       └── README.md
-└── package-b/
-    └── latest/
-        └── app.dmg
-```
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-### Build Process
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-1. **Generation Phase**: During `vite build`, the generator script:
-   - Connects to S3 storage
-   - Discovers all packages and versions
-   - Generates static Vue pages for each package/version
-   - Creates routing data and metadata
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-2. **Static Output**: Produces a fully static site with:
-   - Pre-generated Vue components in `src/generated/`
-   - Package metadata in `src/data.js`
-   - Dynamic routing configuration
-
-## Site Structure
-
-- `/` - Homepage with package listing and search
-- `/package-name` - Package overview with latest version and documentation
-- `/package-name/latest` - Redirects to the latest version
-- `/package-name/v1.2.3` - Specific version page with downloads and documentation
-
-## Installation & Setup
-
-### Prerequisites
-
-- Node.js 20.19.0+ or 22.12.0+
-- S3-compatible storage (AWS S3, MinIO, etc.)
-
-### Environment Configuration
-
-Create a `.env` file in the project root:
-
-```env
-S3_ACCESS_KEY=your_s3_access_key
-S3_SECRET_KEY=your_s3_secret_key
-S3_BUCKET_NAME=your_bucket_name
-AWS_REGION=us-east-1
-S3_ENDPOINT=https://your-s3-endpoint.com  # Optional for custom endpoints
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-### Installation
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```bash
-npm install
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
-
-### Development
-
-```bash
-npm run dev
-```
-
-### Production Build
-
-```bash
-npm run build
-```
-
-The build process automatically:
-1. Scans your S3 bucket for packages
-2. Generates static Vue pages
-3. Creates optimized production assets
-
-## Project Structure
-
-```
-├── scripts/
-│   ├── generator.js              # Main page generator
-│   ├── storage/
-│   │   ├── s3-provider.js        # S3 storage implementation
-│   │   └── storage-interface.js  # Abstract storage interface
-│   └── services/
-│       ├── package-service.js    # Package discovery logic
-│       └── template-service.js   # Vue template generation
-├── src/
-│   ├── components/
-│   │   └── MarkdownRenderer.vue  # README rendering component
-│   ├── template/
-│   │   ├── PackagePageTemplate.vue
-│   │   └── VersionPageTemplate.vue
-│   ├── generated/               # Auto-generated pages (git-ignored)
-│   ├── data.js                 # Generated package metadata
-│   ├── App.vue
-│   └── Home.vue
-└── vite.config.js              # Build configuration with generator plugin
-```
-
-## Key Technologies
-
-- **Vue 3**: Progressive JavaScript framework
-- **Element Plus**: Vue 3 UI component library
-- **Vue Router**: Client-side routing
-- **Vite**: Build tool and development server
-- **AWS SDK**: S3 client for storage operations
-- **Marked**: Markdown parsing for README files
-
-## Version Handling
-
-The system intelligently sorts versions using a custom comparison algorithm that supports:
-
-- Semantic versions: `v1.2.3`, `v2.0.0-alpha`
-- Simple versions: `v8`, `v9`
-- Build numbers: `build-149`, `build-150`
-- Plain numbers: `1`, `2`, `10`
-
-Versions are automatically sorted in descending order (newest first).
-
-## Customization
-
-### Adding Storage Providers
-
-Implement the `StorageProvider` interface in `scripts/storage/` to support additional storage backends (WebDAV, FTP, etc.).
-
-### Styling
-
-The project uses Element Plus themes. Customize styling in component files or add global styles to `src/App.vue`.
-
-### Package Discovery
-
-Modify `scripts/services/package-service.js` to adjust how packages and versions are discovered from your storage structure.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test with `npm run build`
-5. Submit a pull request
-
-## License
-
-This project follows standard open-source practices. Please ensure compliance with all dependencies' licenses.
-
-## Deployment
-
-Since this generates a static site, you can deploy to:
-
-- GitHub Pages
-- Netlify
-- Vercel
-- Any static hosting service
-- CDN with S3 bucket
-
-Simply run `npm run build` and deploy the `dist/` folder.
-
----
-
-**Note**: This is a build-time static generator. All package discovery and page generation happens during the build process, not at runtime.
