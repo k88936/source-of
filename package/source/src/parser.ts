@@ -87,6 +87,7 @@ export class Parser {
         }
 
         const files: File[] = await this.storage.listFiles();
+        console.log(files)
         const tree = buildTree(files);
 
         console.log(renderTree(tree))

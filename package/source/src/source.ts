@@ -72,4 +72,5 @@ class Source {
 }
 
 // Export for use in a build process
-export {PackageInfo, VersionInfo, Source};
+export type { PackageInfo, VersionInfo };
+export { Source };
