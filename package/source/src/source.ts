@@ -2,11 +2,11 @@
  * Page Generator - Creates static Vue pages from S3 data
  * This script generates all pages during the Vite build process
  */
-import {PackageInfo, Parser, VersionInfo,} from "./parser";
-import {S3StorageProvider} from "./storage/s3-provider";
+import { PackageInfo, Parser, VersionInfo, } from "./parser";
+import { S3StorageProvider } from "./storage/s3-provider";
 
 export interface PackageData {
-    packages: PackageInfo[];
+    packages: Record<string, PackageInfo>;
     lastUpdated: string;
 }
 
@@ -50,13 +50,19 @@ class Source {
         try {
             const packages = await this.parser.parse();
 
-            for (const pkg of packages) {
-                pkg.versions.sort(compareVersions);
-                const latestVersion = pkg.versions[0]; // Now first is the latest
+            for (const pkg of Object.values(packages)) {
+                const versionEntries = Object.entries(pkg.versions);
+                versionEntries.sort(([, a], [, b]) => compareVersions(a, b));
+                pkg.versions = Object.fromEntries(versionEntries);
 
-                const readme_file = latestVersion.files.find(file => file.name === "README.md");
+                const latestVersion = versionEntries[0]?.[1];
+                if (!latestVersion) {
+                    continue;
+                }
+
+                const readme_file = Object.values(latestVersion.files).find(file => file.name === "README.md");
                 if (readme_file) {
-                    pkg.readme = await this.storageProvider.readFile(readme_file.key)
+                    pkg.readme = await this.storageProvider.readFile(readme_file.key);
                 }
             }
             return {
@@ -64,7 +70,7 @@ class Source {
                 lastUpdated: new Date().toISOString()
             };
         } catch (error) {
-            console.error('Failed to fetch package data from S3 storage',error);
+            console.error('Failed to fetch package data from S3 storage', error);
             console.error('-'.repeat(80));
             throw new Error('Package data fetch failed - cannot proceed with build');
         }

@@ -3,20 +3,8 @@
  * Uses abstract storage provider for backend operations
  */
 
-import {File, StorageProvider} from './storage/storage-provider';
+import { File, StorageProvider } from './storage/storage-provider';
 
-
-export interface VersionInfo {
-    version: string;
-    date: string;
-    files: Array<FileInfo>;
-}
-
-export interface PackageInfo {
-    name: string;
-    readme: string;
-    versions: VersionInfo[];
-}
 
 export interface FileInfo {
     name: string;
@@ -24,6 +12,18 @@ export interface FileInfo {
     size: number;
     lastModified: string;
     downloadUrl: string;
+}
+
+export interface VersionInfo {
+    version: string;
+    date: string;
+    files: Record<string, FileInfo>;
+}
+
+export interface PackageInfo {
+    name: string;
+    readme: string;
+    versions: Record<string, VersionInfo>;
 }
 
 
@@ -37,7 +37,7 @@ export class Parser {
         this.storage = storageProvider;
     }
 
-    async parse(): Promise<Array<PackageInfo>> {
+    async parse(): Promise<Record<string, PackageInfo>> {
         interface TreeNode {
             [key: string]: TreeNode | File;
         }
@@ -92,42 +92,40 @@ export class Parser {
 
         console.log(renderTree(tree))
 
-        const result: Array<PackageInfo> = [];
+        const result: Record<string, PackageInfo> = {};
         for (const package_name of Object.keys(tree)) {
             const versions_node = tree[package_name] as TreeNode;
-            const versions: Array<VersionInfo> = [];
-            console.assert(!("key" in versions_node))
+            const versions: Record<string, VersionInfo> = {};
+            console.assert(!("key" in versions_node));
             for (const version of Object.keys(versions_node)) {
                 const files_node = versions_node[version] as TreeNode;
-                const files: Array<FileInfo> = [];
+                const files: Record<string, FileInfo> = {};
                 for (const file_name of Object.keys(files_node)) {
                     const file = files_node[file_name] as File;
                     console.assert("key" in file);
-                    files.push({
-                            downloadUrl: this.storage.getDownloadUrl(file.key),
-                            key: file.key,
-                            lastModified: "",
-                            name: file_name,
-                            size: file.size
-                        }
-                    )
+                    files[file_name] = {
+                        downloadUrl: this.storage.getDownloadUrl(file.key),
+                        key: file.key,
+                        lastModified: "",
+                        name: file_name,
+                        size: file.size,
+                    };
                 }
 
-                versions.push({
+                versions[version] = {
                     date: "",
                     files: files,
-                    version: version
-                })
-
+                    version: version,
+                };
             }
 
-            result.push({
+            result[package_name] = {
                 name: package_name,
                 readme: "",
-                versions: versions
-            })
+                versions: versions,
+            };
         }
-        
+
         return result;
     }
 }
