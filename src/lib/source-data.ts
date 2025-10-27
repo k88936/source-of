@@ -73,8 +73,10 @@ const MOCK_DATA: PackageData = {
 };
 
 const getData = cache(async (): Promise<PackageData> => {
-    const source = new Source();
-    return source.get();
+    return MOCK_DATA
+    
+    // const source = new Source();
+    // return source.get();
 });
 
 export const getPackageData = getData;

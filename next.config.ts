@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'export',
-  distDir: 'docs',
+  distDir: 'dist',
   basePath: '/source-of',
   reactCompiler: true,
 };
