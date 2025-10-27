@@ -9,7 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@jetbrains/ring-ui-built": "^7.0.72",
     "next": "16.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0"

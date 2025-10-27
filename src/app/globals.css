@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import '@jetbrains/ring-ui-built/components/style.css';
 
 :root {
   --background: #ffffff;
