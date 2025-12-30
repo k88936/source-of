@@ -1,0 +1,11 @@
+1:"$Sreact.fragment"
+2:I[9699,[],"ViewportBoundary"]
+4:I[9699,[],"MetadataBoundary"]
+5:"$Sreact.suspense"
+7:I[5786,[],"IconMark"]
+:HL["/source-of/_next/static/media/4cf2300e9c8272f7-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/source-of/_next/static/media/93f479601ee12b01-s.p.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/source-of/_next/static/css/afdd6200cd95eded.css","style"]
+0:{"buildId":"cqmz1ndVn1NzoLUQLOFIC","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"package","paramType":"d","paramKey":"Fcalender","hasRuntimePrefetch":false,"slots":{"children":{"name":"version","paramType":"d","paramKey":"v362","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"head":["$","$1","h",{"children":[null,["$","$L2",null,{"children":"$@3"}],["$","div",null,{"hidden":true,"children":["$","$L4",null,{"children":["$","$5",null,{"name":"Next.Metadata","children":"$@6"}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"isHeadPartial":false,"staleTime":300}
+3:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+6:[["$","title","0",{"children":"Fcalender v362 · Release"}],["$","meta","1",{"name":"description","content":"Download artifacts for Fcalender v362."}],["$","link","2",{"rel":"icon","href":"/source-of/favicon.ico?603d046c9a6fdfbb","type":"image/x-icon","sizes":"16x16"}],["$","$L7","3",{}]]
